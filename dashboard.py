@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
+mpl.use("agg")
 # We're gonna use the Figure constructor
 # see https://matplotlib.org/stable/gallery/user_interfaces/web_application_server_sgskip.html
 # for more information
