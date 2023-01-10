@@ -2,8 +2,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
-mpl.use('Agg') # backend
-import matplotlib.pyplot as plt
+# We're gonna use the Figure constructor
+# see https://matplotlib.org/stable/gallery/user_interfaces/web_application_server_sgskip.html
+# for more information
+from matplotlib.figure import Figure
 import requests
 
 st.set_page_config(layout="wide")
@@ -80,8 +82,9 @@ if client_id > 100001:
         # définition de la barre d'échelle:
         cmap = (mpl.colors.ListedColormap(colors).with_extremes(over='0.25', under='0.75'))
 
-        fig, ax = plt.subplots()
-
+        # Generate the figure **without using pyplot**.
+        fig = Figure()
+        ax = fig.subplots()
         #pred = 0.19
         color = cmap(pred)
         pred = round(pred * 100, 2)
@@ -129,28 +132,30 @@ if client_id > 100001:
     left_column_2, right_column_2 = st.columns(2)
     # Local importance
     with left_column_2:
-        fig = plt.figure(figsize=(8, 6))
-        plt.barh(local_features[::-1], local_vals[::-1],
+        fig = Figure(figsize=(8,6))
+        ax = fig.subplots()
+        ax.barh(local_features[::-1], local_vals[::-1],
                  color=["red" if coef < 0 else "green" for coef in local_vals[::-1]])
-        # plt.xticks(rotation=30, horizontalalignment='right')
+        # ax.set_xticks(rotation=30, horizontalalignment='right')
         x1 = - abs(1.1 * local_vals[0])
         x2 = - x1
-        plt.xlim(x1, x2)
-        plt.xlabel('Contribution')
-        plt.title('Importance locale', fontsize=20, va='bottom')
+        ax.set_xlim(x1, x2)
+        ax.set_xlabel('Contribution')
+        ax.set_title('Importance locale', fontsize=20, va='bottom')
 
         st.pyplot(fig)
 
     # Global importance
     with right_column_2:
-        fig = plt.figure(figsize=(8, 6))
-        plt.barh(global_features[::-1], global_vals[::-1],
+        fig = Figure(figsize=(8, 6))
+        ax = fig.subplots()
+        ax.barh(global_features[::-1], global_vals[::-1],
                  color=["red" if coef < 0 else "green" for coef in global_vals[::-1]])
         x1 = - abs(1.1 * global_vals[0])
         x2 = - x1
-        plt.xlim(x1, x2)
-        plt.xlabel('Contribution')
-        plt.title('Importance globale', fontsize=20, va='bottom')
+        ax.set_xlim(x1, x2)
+        ax.set_xlabel('Contribution')
+        ax.set_title('Importance globale', fontsize=20, va='bottom')
 
         st.pyplot(fig)
 
@@ -182,8 +187,6 @@ if client_id > 100001:
             x = x[y == 1]
 
     with right_column_3:
-        fig, ax = plt.subplots()
-
         if x[feature].unique().size < 10:
             n_bins = 10
         if (x[feature].unique().size >= 10) & (x[feature].unique().size < 100):
@@ -194,6 +197,8 @@ if client_id > 100001:
             n_bins = x[feature].unique().size // 10
         n_bins = min(n_bins, 300)
 
+        fig = Figure()
+        ax = fig.subplots()
         if clients == 'Tous les clients':
             ax.hist(x.loc[y == 0, feature], bins=n_bins, density=normalize, label='Clients solvables')
             ax.hist(x.loc[y == 1, feature], bins=n_bins, density=normalize, label='Clients insolvables',
