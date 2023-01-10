@@ -196,7 +196,7 @@ if client_id > 100001:
         n_bins = min(n_bins, 300) # no more than 300 bins
 
         with _lock:
-            fig4 = Figure()
+            fig4 = Figure(figsize=(8,6))
             ax4 = fig4.subplots()
             if clients == 'Tous les clients':
                 ax4.hist(x.loc[y == 0, feature], bins=n_bins, density=normalize, label='Clients solvables')
