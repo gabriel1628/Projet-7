@@ -142,7 +142,10 @@ if client_id > 100001:
             ax2.set_xlim(x1, x2)
             ax2.set_xlabel('Contribution')
             ax2.set_title('Importance locale', fontsize=20, va='bottom')
-            st.pyplot(fig2)
+            #st.pyplot(fig2)
+            buf2 = BytesIO()
+            fig2.savefig(buf2, format="png")
+            st.image(buf2)
 
     with right_column_2: # Global importance
         with _lock:
@@ -155,7 +158,10 @@ if client_id > 100001:
             ax3.set_xlim(x1, x2)
             ax3.set_xlabel('Contribution')
             ax3.set_title('Importance globale', fontsize=20, va='bottom')
-            st.pyplot(fig3)
+            #st.pyplot(fig3)
+            buf3 = BytesIO()
+            fig3.savefig(buf3, format="png")
+            st.image(buf3)
 
 
     #   Distribution
@@ -219,6 +225,6 @@ if client_id > 100001:
             ax4.legend()
             ax4.set_xlim(xlims)
             #st.pyplot(fig4)
-            buf = BytesIO()
-            fig4.savefig(buf, format="png")
-            st.image(buf)
+            buf4 = BytesIO()
+            fig4.savefig(buf4, format="png")
+            st.image(buf4)
