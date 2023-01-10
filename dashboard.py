@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-
+from io import BytesIO
 import matplotlib as mpl
 mpl.use("agg")
 # We're gonna use the Figure constructor
@@ -218,4 +218,7 @@ if client_id > 100001:
             ax4.set_xlabel(feature)
             ax4.legend()
             ax4.set_xlim(xlims)
-            st.pyplot(fig4)
+            #st.pyplot(fig4)
+            buf = BytesIO()
+            fig4.savefig(buf, format="png")
+            st.image(buf)
