@@ -132,7 +132,7 @@ if client_id > 100001:
 
     with left_column_2: # Local importance
         with _lock:
-            fig2 = Figure(figsize=(6, 4))
+            fig2 = Figure(figsize=(4, 3))
             ax2 = fig2.subplots()
             ax2.barh(local_features[::-1], local_vals[::-1],
                      color=["red" if coef < 0 else "green" for coef in local_vals[::-1]])
@@ -149,7 +149,7 @@ if client_id > 100001:
 
     with right_column_2: # Global importance
         with _lock:
-            fig3 = Figure(figsize=(6, 4))
+            fig3 = Figure(figsize=(4, 3))
             ax3 = fig3.subplots()
             ax3.barh(global_features[::-1], global_vals[::-1],
                      color=["red" if coef < 0 else "green" for coef in global_vals[::-1]])
