@@ -39,6 +39,7 @@ def load_X_y(nan):
     y = pd.read_csv('https://projet7-bucket.s3.eu-west-3.amazonaws.com/y.csv', index_col=0)['TARGET']
     return X, y
 
+
 nan = 1.01010101 # remplacement des NaN par cette valeur
 X, y = load_X_y(nan)
 
