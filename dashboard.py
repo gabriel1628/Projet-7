@@ -14,8 +14,8 @@ fontsize = '24px'
 ########## Import des données ##########
 
 def load_X_y(nan):
-    X = pd.read_csv('/Users/gabriel/Documents/gabriel/Git/Projet-7/data/X.csv', index_col=0).fillna(nan)
-    y = pd.read_csv('/Users/gabriel/Documents/gabriel/Git/Projet-7/data/y.csv', index_col=0)['TARGET']
+    X = pd.read_csv('https://projet7-bucket.s3.eu-west-3.amazonaws.com/X.csv', index_col=0).fillna(nan)
+    y = pd.read_csv('https://projet7-bucket.s3.eu-west-3.amazonaws.com/y.csv', index_col=0)['TARGET']
     return X, y
 
 
