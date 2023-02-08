@@ -6,4 +6,4 @@ COPY ./explainer.dill /deploy/
 WORKDIR /deploy/
 RUN pip install -r requirements.txt
 EXPOSE 80
-ENTRYPOINT ["python", "flask_deployment.py"]
+ENTRYPOINT ["python", "model_deployment.py"]
