@@ -26,8 +26,9 @@ Vous pouvez accéder à l'application en cliquant sur le lien ci-dessous :
 Le dashboard peut aussi être lancé depuis le terminal avec la commande `streamlit run dashboard.py`
 (streamlit doit être installé). Le dashboard peut mettre plusieurs minutes à se lancer la première fois.
 
-Si cela ne fonctionne plus, c'est que j'ai sûrement arrêté l'instance AWS EC2 qui héberge le modèle. Vous pouvez
-déployez vous-même le modèle, pour cela :
+Si cela ne fonctionne plus, c'est que j'ai sûrement arrêté l'instance AWS EC2 qui héberge le modèle.
+Dans ce cas, vous pouvez déployer le modèle en local et utiliser votre adresse locale, ou bien vous pouvez
+déployer vous-même le modèle, pour cela :
 - lancez une instance EC2 sur AWS. Modifiez le groupe de sécurité de sorte à autoriser le trafic HTTP sur le port
 80 (ou tout autre port que vous choisirez pour déployer le modèle) pour que votre modèle soit accessible par tous
 - transférez les fichiers `Dockerfile`, `model_deployment.py`, `requirements.txt`, `pipeline_projet7.joblib` et
