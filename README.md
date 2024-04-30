@@ -39,7 +39,7 @@ sudo usermod -a -G docker ec2-user
 ```
 - Toujours dans votre instance, lancez la commande suivante pour construire une image Docker :
 ```
-docker build -t <image-name>
+docker build -t <image-name> .
 ```
 en remplaçant `<image-name>` par un nom de votre choix.
 - Lancez un container docker à partir de l'image créée avec la commande 
